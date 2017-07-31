@@ -16,6 +16,7 @@ public class HomePage {
 	{
 		try
 		{
+			System.out.println("hi there");
 			reserveLink.click();
 			System.out.println("Clickon Reserve link");
 			PageFactory.initElements(Generic.driver, SelectRoomPage.class);
