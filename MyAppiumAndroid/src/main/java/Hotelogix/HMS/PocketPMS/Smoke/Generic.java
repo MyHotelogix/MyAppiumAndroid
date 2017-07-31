@@ -18,6 +18,7 @@ public class Generic {
 	{
 		try
 		{
+			System.out.println("hi");
 		File classpathRoot = new File(System.getProperty("user.dir"));
 		File appDir = new File(classpathRoot, "/Apps/PocketPMS/");
 		File app = new File(appDir, "android-debug.apk");
