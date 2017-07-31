@@ -1,4 +1,4 @@
 theme: jekyll-theme-merlot
 [branch "Gaurav_App"]
     remote = origin
-    merge = refs/heads/mybranch
+    merge = refs/heads/Gaurav_App
