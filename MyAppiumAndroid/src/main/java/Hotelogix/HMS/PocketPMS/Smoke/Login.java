@@ -73,7 +73,7 @@ public class Login {
 			}
 			else
 			{
-				System.out.println("In else");
+				
 				Generic.driver.close();
 			}
 			
