@@ -39,7 +39,7 @@ public class AppTest
 	
 	}
 	@Test
-	public void loginApp()
+	public void loginApp() throws InterruptedException
 	{
 		Generic.launchAppToLogin();
 		System.out.println("Trying to Login App");
