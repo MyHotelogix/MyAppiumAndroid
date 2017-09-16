@@ -12,12 +12,12 @@ public class SelectRoomPage {
 	@FindBy(name="Select Room")
 	public static WebElement selectRoom;
 	
-	@FindBy(className="android.view.View")
-	public static List<WebElement> selectRoomChildElements;
 	
+	
+	@FindBy(xpath="//ion-side-menus/ion-side-menu-content/ion-nav-view/div/ion-view/ion-content/div/div[1]/ion-list/div/ion-item[1]/div/div[2]/a")
 	public static WebElement roomType;
 	
-	@FindBy(name="CONTINUE")
+	@FindBy(xpath="//ion-side-menus/ion-side-menu-content/ion-nav-view/div/ion-view/ion-footer-bar/div/div[2]/a")
 	public static WebElement continueLink;
 	
 	
@@ -30,8 +30,8 @@ public class SelectRoomPage {
 		try
 		{
 			Thread.sleep(8000);
-		roomType = selectRoomChildElements.get(48);
-		//Thread.sleep(4000);
+		
+		
 		roomType.click();
 		continueLink.click();
 		PageFactory.initElements(Generic.driver, StayDetails.class);
@@ -52,7 +52,7 @@ public class SelectRoomPage {
 		System.out.println("Befor getting window handle");	
 		//Generic.getCurrentWindowHandle();
 		Thread.sleep(4000);
-		agentLink= selectRoomChildElements.get(30);
+		//agentLink= selectRoomChildElements.get(30);
 		Thread.sleep(4000);
 		agentLink.click();
 		PageFactory.initElements(Generic.driver, SelectAgentPage.class);
@@ -70,7 +70,7 @@ public class SelectRoomPage {
 		try
 		{
 		Thread.sleep(5000);
-		roomType = selectRoomChildElements.get(55);
+		//roomType = selectRoomChildElements.get(55);
 		Thread.sleep(4000);
 		roomType.click();
 		continueLink.click();
@@ -91,7 +91,7 @@ public class SelectRoomPage {
 		System.out.println("Befor getting window handle");	
 		//Generic.getCurrentWindowHandle();
 		Thread.sleep(4000);
-		corpLink= selectRoomChildElements.get(33);
+		//corpLink= selectRoomChildElements.get(33);
 		Thread.sleep(4000);
 		corpLink.click();
 		PageFactory.initElements(Generic.driver, SelectCorporatePage.class);

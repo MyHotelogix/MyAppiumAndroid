@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class SingleEditPage {
 	
-	@FindBy(name=" CHECK-IN ")
+	@FindBy(xpath="//ion-side-menus/ion-side-menu-content/ion-nav-view/div[2]/ion-footer-bar/div[1]/a[1]")
 	public static WebElement checkinLink;
 	
 	@FindBy(name=" ACCOUNT STATEMENT ")

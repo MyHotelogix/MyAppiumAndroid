@@ -38,18 +38,21 @@ public class AppTest
 		//Generic.launchAppToHomePage();
 	
 	}
-	@Test
+	@Test(priority=1)
 	public void loginApp() throws InterruptedException
 	{
-		Generic.launchAppToLogin();
+		System.out.println("Started executing 1st test");
+		Generic.launchAppToHomePage();
+		//Generic.launchAppToLogin();
 		System.out.println("Trying to Login App");
-		Login.loginApp();
+		//Login.loginApp();
 	
 	}
 	
-	//@Test
+	@Test(priority=2)
 	public void createandCheckinSingleReservation()
 	{
+		System.out.println("Running test case 2 now");
 		
 		HomePage.clickOnReserve();
 		SelectRoomPage.selectingRoomSingleReservation();

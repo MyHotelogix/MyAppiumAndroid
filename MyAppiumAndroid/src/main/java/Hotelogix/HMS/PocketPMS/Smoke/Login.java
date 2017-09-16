@@ -3,6 +3,7 @@ package Hotelogix.HMS.PocketPMS.Smoke;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -71,20 +72,16 @@ public class Login {
 			action.press(x,y).moveTo(x+90,y).release().perform();
 			*/
 			
-			System.out.println("Scroll performed.");
+			//System.out.println("Scroll performed.");
 			
 			Thread.sleep(2000);
 			//emailTextbox=edittextChildElements.get(1);
 			emailTextbox.sendKeys("aaa@gmail.com");
+			
+			Generic.performScroll();
+		   
 			pwdTextbox.sendKeys("111111");
-		
 			Thread.sleep(2000);
-			
-			
-			JavascriptExecutor js = (JavascriptExecutor) Generic.driver;
-			System.out.println("swiping to element " + submitbtn);
-			js.executeScript("mobile: find", submitbtn);
-			Generic.driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 			
 			submitbtn.click();
 			/*System.out.println(edittextChildElements.size());

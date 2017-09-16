@@ -6,13 +6,15 @@ import org.testng.Assert;
 
 public class CheckinCardPage {
 	
-	@FindBy(name=" PRINT")
+	@FindBy(xpath="//*[@id='checkincard']/div/div/div/div")
 	public static WebElement printBtn;
 	
 	public static boolean result=false;
 	
 	public static void confirmingResult()
 	{
+		
+		Generic.performScroll();
 		result=false;
 		if(printBtn.isDisplayed())
 		{

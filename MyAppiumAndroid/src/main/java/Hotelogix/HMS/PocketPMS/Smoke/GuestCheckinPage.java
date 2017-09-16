@@ -9,15 +9,13 @@ import org.openqa.selenium.support.PageFactory;
 
 public class GuestCheckinPage {
 	
-	@FindBy(name="Guest Checkin")
+	
 	public static WebElement selectAll;
 	
-	@FindBy(className="android.view.View")
-	public static List<WebElement> selectAllChildElements;
-	
+	@FindBy(xpath="//ion-side-menus/ion-side-menu-content/ion-nav-view/div[3]/ion-view/ion-content/div/check-in/div/form/div[1]/div/div[1]/label")
 	public static WebElement selectAllGuest;
 	
-	@FindBy(name=" CHECK-IN SELECTED ")
+	@FindBy(xpath="//ion-side-menus/ion-side-menu-content/ion-nav-view/div[3]/ion-footer-bar/div/button")
 	public static WebElement checkinSelected;
 	
 	
@@ -29,33 +27,13 @@ public class GuestCheckinPage {
 		try
 		{
 		Thread.sleep(3000);
-		
-		
-		System.out.println(selectAllChildElements.size());
-		selectAllGuest = selectAllChildElements.get(52);
-		Thread.sleep(4000);
-		
 		selectAllGuest.click();
+		System.out.println("Checkbox selected");
+		checkinSelected.click();
 		
-		if(selectAllGuest.isSelected())
-		{
-			System.out.println("In IF");
-			checkinSelected.click();
-		}
-		else
-		{
-			System.out.println(selectAllChildElements.size());
-			selectAllGuest = selectAllChildElements.get(51);
-			System.out.println("In else");
-			selectAllGuest.click();
-			checkinSelected.click();
-		}
 		//allSelect=selectAllChildElements.get(61);
-		
 		//allSelect.click();
-		
-		
-		Thread.sleep(10000);
+		//Thread.sleep(10000);
 		PageFactory.initElements(Generic.driver, CheckinCardPage.class);
 		}
 		catch(Exception e)

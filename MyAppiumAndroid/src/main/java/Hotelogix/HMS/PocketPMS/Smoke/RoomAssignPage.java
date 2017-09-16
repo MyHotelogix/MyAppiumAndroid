@@ -12,20 +12,18 @@ public class RoomAssignPage {
 	@FindBy(name="Room Assign")
 	public static WebElement assignRoom;
 	
-	@FindBy(className="android.view.View")
-	public static List<WebElement> assignRoomChildElements;
 	
+	@FindBy(xpath="//ion-side-menus/ion-side-menu-content/ion-nav-view/ion-view[3]/ion-content/div/room-assign/div[2]/form/div/div[2]/div[1]/label")
 	public static WebElement rooms;
 	
-	@FindBy(name=" CONTINUE ")
+	@FindBy(xpath="//ion-side-menus/ion-side-menu-content/ion-nav-view/ion-view[3]/ion-footer-bar/div/button")
 	public static WebElement continueLink;
 	
 	public static GuestCheckinPage assignRoom()
 	{
 		try
 		{
-		System.out.println(assignRoomChildElements.size());
-		rooms = assignRoomChildElements.get(55);
+		
 		rooms.click();
 		continueLink.click();
 		PageFactory.initElements(Generic.driver, GuestCheckinPage.class);

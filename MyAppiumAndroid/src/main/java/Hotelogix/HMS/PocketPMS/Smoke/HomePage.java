@@ -6,10 +6,10 @@ import org.openqa.selenium.support.PageFactory;
 
 public class HomePage {
 	
-	@FindBy(name="RESERVE")
+	@FindBy(xpath="//ion-side-menus/ion-side-menu-content/ion-nav-view/ion-view/ion-content/div/div[4]/a")
 	public static WebElement reserveLink;
 	
-	@FindBy(name="CHECK-OUT")
+	@FindBy(xpath="//ion-side-menus/ion-side-menu-content/ion-nav-view/ion-view/ion-content/div/div[3]/a")
 	public static WebElement checkoutLink;
 	
 	public static SelectRoomPage clickOnReserve()

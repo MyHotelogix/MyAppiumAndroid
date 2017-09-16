@@ -8,6 +8,7 @@ import java.net.URL;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.PageFactory;
@@ -51,7 +52,7 @@ public class Generic {
 		//System.out.println(s1);
 		
 		//Thread.sleep(15000);
-	     Set<String> contextNames = driver.getContextHandles();
+	    /* Set<String> contextNames = driver.getContextHandles();
 	     for (String contextName : contextNames) {
 	     System.out.println(contextName);
 	     if (contextName.contains("WEBVIEW_com.hotelogix.app"))
@@ -61,7 +62,7 @@ public class Generic {
 		     Thread.sleep(1500); 
 	     }
 	     }
-		
+		*/
 		
 		PageFactory.initElements(driver, Login.class);
 		}
@@ -74,7 +75,7 @@ public class Generic {
 		
 	}
 	
-	public static HomePage launchAppToHomePage()
+	public static HomePage launchAppToHomePage() throws InterruptedException
 	{
 		try
 		{
@@ -90,9 +91,27 @@ public class Generic {
 		capabilities.setCapability("app", app.getAbsolutePath());
 		capabilities.setCapability("appPackage", "");
 		capabilities.setCapability("appActivity", "");
+		capabilities.setCapability("noReset", true);
+		capabilities.setCapability("autoWebview", true);
 
 		driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		
+		System.out.println("Current context is:"+driver.getContext());
+		/*Set<String> contextNames = driver.getContextHandles();
+	     for (String contextName : contextNames) {
+	     System.out.println(contextName);
+	     if (contextName.contains("WEBVIEW_com.hotelogix.app"))
+	     {
+		     driver.context(contextName);
+		     System.out.println(contextName);
+		     Thread.sleep(1500); 
+	     }
+	     }
+		*/
+		
+		
+		
 		PageFactory.initElements(driver, HomePage.class);
 		}
 		catch(MalformedURLException e)
@@ -182,6 +201,29 @@ public class Generic {
 		{
 			e.printStackTrace();
 		}
+	}
+	
+	public static void performScroll()
+	{
+		//Switching to Native view for the scroll
+	    driver.context("NATIVE_APP");
+		System.out.println("NATIVE_APP"+"Context set for the scroll operation");
+		//Thread.sleep(1500); 
+	     
+		//Performing scroll using Dimension
+		Dimension dimensions = Generic.driver.manage().window().getSize();
+		Double screenHeightStart = dimensions.getHeight() * 0.5;
+		int scrollStart = screenHeightStart.intValue();
+		Double screenHeightEnd = dimensions.getHeight() * 0.2;
+		int scrollEnd = screenHeightEnd.intValue();
+		Generic.driver.swipe(0, scrollStart, 0, scrollEnd, 2000);
+		
+		//Thread.sleep(2000);
+		
+		//Moving back to webview after scroll
+		Generic.driver.context("WEBVIEW_com.hotelogix.app");
+		System.out.println("Moving back to WEBVIEW view after scroll");
+		//Thread.sleep(1500); 
 	}
 	
 	
