@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 public class StayDetails {
 	
@@ -32,17 +33,21 @@ public class StayDetails {
 	@FindBy(xpath="//ion-side-menus/ion-side-menu-content/ion-nav-view/ion-view[2]/ion-footer-bar/div/div[2]/a")
 	public static WebElement singleconfirmLink;
 	
+	@FindBy(xpath="//ion-side-menus/ion-side-menu-content/ion-nav-bar/div[1]/ion-header-bar/div[2]")
+	public static WebElement singleEditPageTitle;
+	
+	
 	//@FindBy(className="android.view.View")
 	//public static List<WebElement> allViewElements;
 	
-	public static void enteringGuestInfo()
+	public static void enteringGuestInfo() throws Throwable
 	{
 		try
 		{
 			Thread.sleep(6000);
 			System.out.println("Entering First name");
 			firstName.sendKeys("Gaurav");
-			Thread.sleep(3000);
+			Thread.sleep(6000);
 		
 		crossLink.click();
 		
@@ -52,23 +57,29 @@ public class StayDetails {
 		
 		mail.sendKeys("gaurav.mehta@hotelogix.com");
 		}
-		catch(Exception e)
+		catch(Throwable e)
 		{
-			e.printStackTrace();
+			throw e;
 		}
 	}
 	
-	public static SingleEditPage confirmingGuestDetails()
+	public static SingleEditPage confirmingGuestDetails() throws Throwable
 	{
 		try
 		{
 			singleconfirmLink.click();
-			Thread.sleep(3000);
+			Thread.sleep(8000);
+			
+			String actual=singleEditPageTitle.getText();
+			System.out.println("Single edit page title is:"+actual);
+			Assert.assertEquals(actual,"SINGLE EDIT");
+			
+			
 		PageFactory.initElements(Generic.driver, SingleEditPage.class);
 		}
-		catch(Exception e)
+		catch(Throwable e)
 		{
-			e.printStackTrace();
+			throw e;
 		}
 		return new SingleEditPage();
 	}

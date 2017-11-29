@@ -5,7 +5,7 @@
     <classes>
       <class name="MyAndroid.MyAppiumAndroid.AppTest">
         <methods>
-          <include name="loginApp"/>
+          <include name="createandCheckinSingleReservation"/>
           <include name="appLaunch"/>
           <include name="testcase4"/>
         </methods>

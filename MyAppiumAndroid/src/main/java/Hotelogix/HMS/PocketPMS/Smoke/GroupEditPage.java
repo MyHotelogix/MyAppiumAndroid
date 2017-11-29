@@ -6,7 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class GroupEditPage {
 	
-	@FindBy(name=" GROUP CHECK-IN ")
+	@FindBy(xpath="//ion-side-menus/ion-side-menu-content/ion-nav-view/div[2]/ion-footer-bar/div/a[1]")
 	public static WebElement groupCheckinLink;
 	
 	public static RoomAssignPage performinGroupCheckin()

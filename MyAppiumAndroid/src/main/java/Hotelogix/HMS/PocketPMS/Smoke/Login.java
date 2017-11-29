@@ -16,6 +16,7 @@ import org.openqa.selenium.support.PageFactory;
 
 
 import io.appium.java_client.TouchAction;
+import junit.framework.Assert;
 
 public class Login {
 	/*
@@ -54,16 +55,19 @@ public class Login {
 	@FindBy(xpath="//ion-view/ion-content/div[1]/form/button")
 	static WebElement submitbtn;
 	
+	@FindBy(xpath="//ion-side-menus/ion-side-menu-content/ion-nav-bar/div[2]/ion-header-bar/div[2]")
+	static WebElement homePagetitle;
+	
 	
 
 	
-	public static HomePage loginApp() 
+	public static HomePage loginApp() throws Throwable 
 	{
 		try
 		{
 			Thread.sleep(10000);
 			//idTextbox=edittextChildElements.get(0);
-			idTextbox.sendKeys("12313");
+			idTextbox.sendKeys("12736");
 			
 			/*int x=idTextbox.getLocation().getX();
 			int y=idTextbox.getLocation().getY();
@@ -84,6 +88,10 @@ public class Login {
 			Thread.sleep(2000);
 			
 			submitbtn.click();
+			String actual=homePagetitle.getText();
+			System.out.println("Home Page title is:" +actual);
+			
+			Assert.assertEquals("HOME", actual);
 			/*System.out.println(edittextChildElements.size());
 			mainElement = edittextChildElements.get(2);
 			mainElement.sendKeys("111111");
@@ -109,10 +117,10 @@ public class Login {
 			PageFactory.initElements(Generic.driver, HomePage.class);
 			
 			}
-		catch(InterruptedException e1)
+		catch(Throwable e1)
 		{
 			System.out.println("Thread Exception");
-			Generic.driver.closeApp();
+			throw e1;
 		}
 		System.out.println("Taking Home Page Return");
 		return new HomePage();

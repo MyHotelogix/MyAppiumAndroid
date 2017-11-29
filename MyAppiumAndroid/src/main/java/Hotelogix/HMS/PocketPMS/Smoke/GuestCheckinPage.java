@@ -6,11 +6,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 public class GuestCheckinPage {
 	
 	
-	public static WebElement selectAll;
+
 	
 	@FindBy(xpath="//ion-side-menus/ion-side-menu-content/ion-nav-view/div[3]/ion-view/ion-content/div/check-in/div/form/div[1]/div/div[1]/label")
 	public static WebElement selectAllGuest;
@@ -19,10 +20,11 @@ public class GuestCheckinPage {
 	public static WebElement checkinSelected;
 	
 	
-	public static WebElement allSelect;
+	@FindBy(xpath="//ion-side-menus/ion-side-menu-content/ion-nav-bar/div[2]/ion-header-bar/div[2]")
+	public static WebElement checkinCardPageTitle;
 	
 	
-	public static CheckinCardPage guestCheckin()
+	public static CheckinCardPage guestCheckin() throws Throwable
 	{
 		try
 		{
@@ -30,15 +32,20 @@ public class GuestCheckinPage {
 		selectAllGuest.click();
 		System.out.println("Checkbox selected");
 		checkinSelected.click();
+		Thread.sleep(8000);
+		String actual=checkinCardPageTitle.getText();
+		System.out.println("Checkin card page title is:"+actual);
+		Assert.assertEquals(actual,"CHECK-IN CARD");
+		
 		
 		//allSelect=selectAllChildElements.get(61);
 		//allSelect.click();
 		//Thread.sleep(10000);
 		PageFactory.initElements(Generic.driver, CheckinCardPage.class);
 		}
-		catch(Exception e)
+		catch(Throwable e)
 		{
-			e.printStackTrace();
+			throw e;
 		}
 		return new CheckinCardPage();
 	}

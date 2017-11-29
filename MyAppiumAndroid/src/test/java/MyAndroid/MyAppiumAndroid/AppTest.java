@@ -11,6 +11,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import Hotelogix.HMS.PocketPMS.Smoke.CheckinCardPage;
+import Hotelogix.HMS.PocketPMS.Smoke.CheckinListPage;
 import Hotelogix.HMS.PocketPMS.Smoke.CheckoutListPage;
 import Hotelogix.HMS.PocketPMS.Smoke.FolioListPage;
 import Hotelogix.HMS.PocketPMS.Smoke.Generic;
@@ -32,26 +33,26 @@ public class AppTest
 {
 	
 	@BeforeMethod
-	public void appLaunch() 
+	public void appLaunch() throws Throwable 
 	{
 		System.out.println("In Before");
-		//Generic.launchAppToHomePage();
+		Generic.launchAppToHomePage();
 	
 	}
-	@Test(priority=1)
-	public void loginApp() throws InterruptedException
+	//@Test(priority=1)
+	public void loginApp() throws Throwable 
 	{
 		System.out.println("Started executing 1st test");
-		Generic.launchAppToHomePage();
-		//Generic.launchAppToLogin();
+		Generic.launchAppToLogin();
 		System.out.println("Trying to Login App");
-		//Login.loginApp();
+		Login.loginApp();
 	
 	}
 	
-	@Test(priority=2)
-	public void createandCheckinSingleReservation()
+	@Test
+	public void createandCheckinSingleReservation() throws Throwable 
 	{
+		try{
 		System.out.println("Running test case 2 now");
 		
 		HomePage.clickOnReserve();
@@ -63,6 +64,11 @@ public class AppTest
 		GuestCheckinPage.guestCheckin();
 		CheckinCardPage.confirmingResult();
 		
+		SelectRoomPage.confirmingCheckin();
+		CheckinListPage.verifyingCheckin();
+		}catch(Throwable e){
+	       throw e;
+		}
 	}
 	//@Test
 	public void checkoutReservation()
@@ -76,7 +82,7 @@ public class AppTest
 		
 	}
 	//@Test
-	public void createAgentReservation()
+	public void createAgentReservation() throws Throwable 
 	{
 		HomePage.clickOnReserve();
 		SelectRoomPage.selectingAgentRadioButton();
@@ -89,8 +95,8 @@ public class AppTest
 		CheckinCardPage.confirmingResult();
 		
 	}
-	//@Test
-	public void createCorpReservation()
+//	@Test
+	public void createCorpReservation() throws Throwable 
 	{
 		HomePage.clickOnReserve();
 		SelectRoomPage.selectingCorpRadioButton();

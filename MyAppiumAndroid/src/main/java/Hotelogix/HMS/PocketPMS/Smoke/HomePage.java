@@ -3,6 +3,7 @@ package Hotelogix.HMS.PocketPMS.Smoke;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 public class HomePage {
 	
@@ -12,18 +13,26 @@ public class HomePage {
 	@FindBy(xpath="//ion-side-menus/ion-side-menu-content/ion-nav-view/ion-view/ion-content/div/div[3]/a")
 	public static WebElement checkoutLink;
 	
-	public static SelectRoomPage clickOnReserve()
+	@FindBy(xpath="//ion-side-menus/ion-side-menu-content/ion-nav-bar/div[1]/ion-header-bar/div[2]")
+	public static WebElement selectRoomPageTitle;
+	
+	public static SelectRoomPage clickOnReserve() throws Throwable
 	{
 		try
 		{
 			//System.out.println("hi there");
+			Thread.sleep(15000);
 			reserveLink.click();
 			System.out.println("Clickon Reserve link");
+			String actual=selectRoomPageTitle.getText();
+			System.out.println("Select room page title is:"+actual);
+			Assert.assertEquals(actual, "SELECT ROOM");
+			
 			PageFactory.initElements(Generic.driver, SelectRoomPage.class);
 		}
-		catch(Exception e)
+		catch(Throwable e)
 		{
-			e.printStackTrace();
+			throw e;
 		}
 		return new SelectRoomPage();
 	}
@@ -35,9 +44,9 @@ public class HomePage {
 		checkoutLink.click();
 		PageFactory.initElements(Generic.driver, CheckoutListPage.class);
 		}
-		catch(Exception e)
+		catch(Throwable e)
 		{
-			e.printStackTrace();
+			throw e;
 		}
 		return new CheckoutListPage();
 	}
